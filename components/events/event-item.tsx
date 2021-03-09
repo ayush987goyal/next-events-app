@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import Link from 'next/link';
+
 import { Event } from '../../data/data';
+import classes from './event-item.module.css';
 
 export interface EventItemProps {
   event: Event;
@@ -16,20 +18,20 @@ const EventItem: FC<EventItemProps> = ({ event }) => {
   const exploreLink = `/events/${event.id}`;
 
   return (
-    <li>
+    <li className={classes.item}>
       <img src={`/${event.image}`} alt={event.title} />
-      <div>
-        <div>
+      <div className={classes.content}>
+        <div className={classes.summary}>
           <h2>{event.title}</h2>
-          <div>
+          <div className={classes.date}>
             <time>{humanReadableDate}</time>
           </div>
-          <div>
+          <div className={classes.address}>
             <address>{formattedAddress}</address>
           </div>
         </div>
 
-        <div>
+        <div className={classes.actions}>
           <Link href={exploreLink}>Explore Event</Link>
         </div>
       </div>

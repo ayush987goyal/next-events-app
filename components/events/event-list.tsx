@@ -1,6 +1,8 @@
 import { FC } from 'react';
+
 import { Event } from '../../data/data';
 import EventItem from './event-item';
+import classes from './event-list.module.css';
 
 export interface EventListProps {
   events: Event[];
@@ -8,7 +10,7 @@ export interface EventListProps {
 
 const EventList: FC<EventListProps> = ({ events }) => {
   return (
-    <ul>
+    <ul className={classes.list}>
       {events.map((event) => (
         <EventItem key={event.id} event={event} />
       ))}
