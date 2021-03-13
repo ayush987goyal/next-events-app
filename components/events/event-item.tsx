@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 
 import { Event } from '../../services/model';
 import classes from './event-item.module.css';
@@ -22,7 +23,12 @@ const EventItem: FC<EventItemProps> = ({ event }) => {
 
   return (
     <li className={classes.item}>
-      <img src={`/${event.image}`} alt={event.title} />
+      <Image
+        src={`/${event.image}`}
+        alt={event.title}
+        width={250}
+        height={160}
+      />
       <div className={classes.content}>
         <div className={classes.summary}>
           <h2>{event.title}</h2>
