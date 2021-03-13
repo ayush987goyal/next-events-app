@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import EventList from '../../components/events/event-list';
 import EventsSearch from '../../components/events/events-search';
@@ -20,6 +21,13 @@ const AllEventsPage = ({ events }: AllEventsPageProps) => {
 
   return (
     <>
+      <Head>
+        <title>All Events</title>
+        <meta
+          name="description"
+          content="Find a lot of great events that allow you to evolve..."
+        />
+      </Head>
       <EventsSearch onSearch={searchEventsHandler} />
       <EventList events={events} />
     </>

@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 
 import EventList from '../components/events/event-list';
 import { fetchFeaturedEvents } from '../services/events-service';
@@ -11,6 +12,13 @@ interface HomePageProps {
 const HomePage = ({ featuredEvents }: HomePageProps) => {
   return (
     <div>
+      <Head>
+        <title>NextJS Events</title>
+        <meta
+          name="description"
+          content="Find a lot of great events that allow you to evolve..."
+        />
+      </Head>
       <EventList events={featuredEvents} />
     </div>
   );

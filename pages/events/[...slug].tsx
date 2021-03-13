@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
@@ -50,6 +51,10 @@ const FilteredEventsPage = ({
 
   return (
     <>
+      <Head>
+        <title>Filtered Events</title>
+        <meta name="description" content={`All events for ${month}/${year}`} />
+      </Head>
       <ResultsTitle date={date} />
       <EventList events={filteredEvents} />
     </>
