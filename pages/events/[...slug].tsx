@@ -21,9 +21,17 @@ const FilteredEventsPage = ({
   year,
   month,
 }: FilteredEventsPageProps) => {
+  const pageHeadData = (
+    <Head>
+      <title>Filtered Events</title>
+      <meta name="description" content={`All events for ${month}/${year}`} />
+    </Head>
+  );
+
   if (hasError) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>
           <p>Invalid filter. Please adjust your values!</p>
         </ErrorAlert>
@@ -37,6 +45,7 @@ const FilteredEventsPage = ({
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <>
+        {pageHeadData}
         <ErrorAlert>
           <p>No events found for the chosen filters!</p>
         </ErrorAlert>
@@ -51,10 +60,7 @@ const FilteredEventsPage = ({
 
   return (
     <>
-      <Head>
-        <title>Filtered Events</title>
-        <meta name="description" content={`All events for ${month}/${year}`} />
-      </Head>
+      {pageHeadData}
       <ResultsTitle date={date} />
       <EventList events={filteredEvents} />
     </>
