@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Event } from '../../data/data';
+import { Event } from '../../services/model';
 import EventItem from './event-item';
 import classes from './event-list.module.css';
 

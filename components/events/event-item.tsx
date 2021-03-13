@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Event } from '../../data/data';
+import { Event } from '../../services/model';
 import classes from './event-item.module.css';
 import Button from '../ui/button';
 import DateIcon from '../icons/date-icon';

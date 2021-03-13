@@ -1,12 +1,4 @@
-export interface Event {
-  id: string;
-  title: string;
-  description: string;
-  location: string;
-  date: string;
-  image: string;
-  isFeatured: boolean;
-}
+import { Event } from '../services/model';
 
 const DUMMY_EVENTS: Event[] = [
   {
