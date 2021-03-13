@@ -27,3 +27,20 @@ export async function fetchEventById(id: string) {
 
   return event;
 }
+
+export async function fetchFilteredEvents(dateFilter: {
+  year: number;
+  month: number;
+}) {
+  const allEvents = await fetchAllEvents();
+  const { year, month } = dateFilter;
+
+  let filteredEvents = allEvents.filter((event) => {
+    const eventDate = new Date(event.date);
+    return (
+      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
+    );
+  });
+
+  return filteredEvents;
+}
