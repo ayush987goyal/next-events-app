@@ -4,7 +4,10 @@ import EventContent from '../../components/event-detail/event-content';
 import EventLogistics from '../../components/event-detail/event-logistics';
 import EventSummary from '../../components/event-detail/event-summary';
 import ErrorAlert from '../../components/ui/error-alert';
-import { fetchAllEvents, fetchEventById } from '../../services/events-service';
+import {
+  fetchEventById,
+  fetchFeaturedEvents,
+} from '../../services/events-service';
 import { Event } from '../../services/model';
 
 interface EventDetailPageProps {
@@ -40,17 +43,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const eventId = params.eventId as string;
   const event = await fetchEventById(eventId);
 
-  return { props: { event } };
+  return {
+    props: { event },
+    revalidate: 30,
+  };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allEvents = await fetchAllEvents();
+  const allEvents = await fetchFeaturedEvents();
 
   return {
     paths: allEvents.map((event) => ({
       params: { eventId: event.id },
     })),
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
