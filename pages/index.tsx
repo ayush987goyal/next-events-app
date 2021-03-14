@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import EventList from '../components/events/event-list';
+import NewsletterRegistration from '../components/input/newsletter-registration';
 import { fetchFeaturedEvents } from '../services/events-service';
 import { Event } from '../services/model';
 
@@ -19,6 +20,7 @@ const HomePage = ({ featuredEvents }: HomePageProps) => {
           content="Find a lot of great events that allow you to evolve..."
         />
       </Head>
+      <NewsletterRegistration />
       <EventList events={featuredEvents} />
     </div>
   );
